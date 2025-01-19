@@ -1,15 +1,29 @@
 function main() {
-    for (let i = 0; i < 8; i++) {
-	strToPrint = "\u2500\u2500"
-	if (i == 0) {
-	    strToPrint = "\u250C" + strToPrint
+    for (let row = 0; row < 8; row++) {
+	for (let column = 0; column < 8; column++) {
+	    if (row === 0) {
+		strToPrint = "\u2500\u2500";
+		if (column === 0) {
+		    strToPrint = "\u250C" + strToPrint;
+		}
+		strToPrint += "\u252C";
+		if (column === 7) {
+		    strToPrint = strToPrint.slice(0, -1);
+		    strToPrint += "\u2510";
+		}
+		process.stdout.write(strToPrint);
+	    }
 	}
-	strToPrint += "\u252C"
-	if (i == 7) {
-	    strToPrint = strToPrint.slice(0, -1)
-	    strToPrint += "\u2510"
+	console.log();
+	for (let column = 0; column < 8; column++) {
+	    if (row == 0) {
+		strToPrint = "\u2502  "
+		if (column === 7) {
+		    strToPrint += "\u2502"
+		}
+		process.stdout.write(strToPrint);
+	    }
 	}
-	process.stdout.write(strToPrint);
     }
 }
 
